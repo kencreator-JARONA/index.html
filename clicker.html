@@ -1,0 +1,41 @@
+<!--UNFINISHED-->
+<!Doctype html>
+<html>
+    <head>
+        <title>
+            Clicker game
+        </title>
+    </head>
+    <body>
+        
+        <h1 id="cash">
+            0
+        </h1>
+        <button onclick="add()">
+            Add
+        </button>
+        <button onclick="upgrade()" id="upgrade">
+            Upgrade Adder (10)
+        </button>
+
+        <script>
+            let cpc = 1;
+            let cash = 0;
+            let upgradeCost = 10;
+
+            function add(){
+                cash += cpc;
+                document.getElementById("cash").textContent = cash;
+            }
+            function upgrade(){
+                if (cash >= upgradeCost){
+                    cash -= upgradeCost;
+                    cpc++
+                    upgradeCost += 15;
+                    document.getElementById("cash").textContent = cash;
+                    document.getElementById("upgrade").textContent = "Upgrade Adder (" + upgradeCost + ")"
+                }
+            }
+        </script>
+    </body>
+</html>
