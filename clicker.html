@@ -1,41 +1,61 @@
-<!--UNFINISHED-->
 <!Doctype html>
 <html>
     <head>
         <title>
-            Clicker game
+            Clicker game V2
         </title>
     </head>
     <body>
-        
         <h1 id="cash">
-            0
+            0 Gasters
         </h1>
+
         <button onclick="add()">
             Add
         </button>
+
         <button onclick="upgrade()" id="upgrade">
             Upgrade Adder (10)
         </button>
 
+        <button onclick="clicker()" id="clicker">
+            Get Clicker (20)
+        </button>
+
         <script>
+            let cps = 0;
             let cpc = 1;
             let cash = 0;
             let upgradeCost = 10;
+            let clickerCost = 20;
 
+            function autoAdd(){
+                cash += cps
+                document.getElementById("cash").textContent = cash + " Gasters";
+            }
             function add(){
                 cash += cpc;
-                document.getElementById("cash").textContent = cash;
+                document.getElementById("cash").textContent = cash + " Gasters";
             }
             function upgrade(){
                 if (cash >= upgradeCost){
                     cash -= upgradeCost;
-                    cpc++
+                    cpc++;
                     upgradeCost += 15;
-                    document.getElementById("cash").textContent = cash;
-                    document.getElementById("upgrade").textContent = "Upgrade Adder (" + upgradeCost + ")"
+                    document.getElementById("cash").textContent = cash + " Gasters";
+                    document.getElementById("upgrade").textContent = "Upgrade Adder (" + upgradeCost + ")";
                 }
             }
+            function clicker(){
+                if (cash >= clickerCost){
+                    cash -= clickerCost;
+                    cps++;
+                    clickerCost += 25;
+                    document.getElementById("cash").textContent = cash + " Gasters";
+                    document.getElementById("clicker").textContent = "Get Clicker (" + clickerCost + ")";
+                }
+            }
+            setInterval(autoAdd, 1000)
         </script>
     </body>
 </html>
