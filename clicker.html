@@ -1,8 +1,9 @@
 <!Doctype html>
+
 <html>
     <head>
         <title>
-            Clicker game V4
+            Clicker game V4.1
         </title>
     </head>
     <body>
@@ -44,7 +45,7 @@
             let mana = 0;
             let mpc = 1;
             let mps = 0;
-            let cashSupplyMana = 100
+            let cashSupplyMana = 100;
 
             function autoAdd(){
                 cash += cps;
@@ -89,7 +90,7 @@
                     manaUpgradeCost += 50;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("mana").textContent = mana + " Mana";
-                    document.getElementById("manaUpgrade").textContent = "Upgrade Mana Adder (" + manaUpgradeCost + ")";
+                    document.getElementById("manaUpgrade").textContent = "Upgrade Mana Adder (" + manaUpgradeCost + " Gasters)";
                 }
             }
             setInterval(autoAdd, 1000)
