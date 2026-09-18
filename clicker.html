@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Clicker game V3
+            Clicker game V4
         </title>
     </head>
     <body>
@@ -19,11 +19,15 @@
         </button>
 
         <button onclick="upgrade()" id="upgrade">
-            Upgrade Adder (10)
+            Upgrade Adder (10 Gasters)
+        </button>
+
+        <button onclick="manaUpgrade()" id="manaUpgrade">
+            Upgrade Mana Adder (30 Gasters)
         </button>
 
         <button onclick="clicker()" id="clicker">
-            Get Clicker (20)
+            Get Clicker (20 Gasters)
         </button>
 
         <button onclick="cashSupply()">
@@ -36,6 +40,7 @@
             let cash = 0;
             let upgradeCost = 10;
             let clickerCost = 20;
+            let manaUpgradeCost = 30;
             let mana = 0;
             let mpc = 1;
             let mps = 0;
@@ -57,7 +62,7 @@
                     cpc++;
                     upgradeCost += 15;
                     document.getElementById("cash").textContent = cash + " Gasters";
-                    document.getElementById("upgrade").textContent = "Upgrade Adder (" + upgradeCost + ")";
+                    document.getElementById("upgrade").textContent = "Upgrade Adder (" + upgradeCost + " Gasters)";
                 }
             }
             function clicker(){
@@ -66,7 +71,7 @@
                     cps++;
                     clickerCost += 25;
                     document.getElementById("cash").textContent = cash + " Gasters";
-                    document.getElementById("clicker").textContent = "Get Clicker (" + clickerCost + ")";
+                    document.getElementById("clicker").textContent = "Get Clicker (" + clickerCost + " Gasters)";
                 }
             }
             function cashSupply(){
@@ -75,6 +80,16 @@
                     mana -= cashSupplyMana;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("mana").textContent = mana + " Mana";
+                }
+            }
+            function manaUpgrade(){
+                if (cash >= manaUpgradeCost){
+                    mpc += 1;
+                    cash -= manaUpgradeCost;
+                    manaUpgradeCost += 50;
+                    document.getElementById("cash").textContent = cash + " Gasters";
+                    document.getElementById("mana").textContent = mana + " Mana";
+                    document.getElementById("manaUpgrade").textContent = "Upgrade Mana Adder (" + manaUpgradeCost + ")";
                 }
             }
             setInterval(autoAdd, 1000)
