@@ -39,9 +39,14 @@
             Gaster Supply (100 Mana)
         </button>
 
+        <button onclick="cashSupplyUpgrade()" id="cashSupplyUpgrade">
+            Upgrade Gaster Supply (100 Mana)
+        </button>
+
         <script>
             let cps = 0;
             let cpc = 1;
+            let cpCashSupply = 1000;
             let cash = 0;
             let upgradeCost = 10;
             let clickerCost = 20;
@@ -51,6 +56,7 @@
             let mpc = 1;
             let mps = 0;
             let cashSupplyMana = 100;
+            let cashSupplyUpgradeMana = 100;
 
             function autoAdd(){
                 cash += cps;
@@ -91,7 +97,7 @@
             }
             function cashSupply(){
                 if (mana >= cashSupplyMana){
-                    cash += 1000;
+                    cash += cpCashSupply;
                     mana -= cashSupplyMana;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("mana").textContent = mana + " Mana";
@@ -105,6 +111,15 @@
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("mana").textContent = mana + " Mana";
                     document.getElementById("manaUpgrade").textContent = "Upgrade Mana Adder (" + manaUpgradeCost + " Gasters)";
+                }
+            }
+            function cashSupplyUpgrade(){
+                if (mana >= cashSupplyUpgradeMana){
+                    cpCashSupply += 5000;
+                    mana -= cashSupplyUpgradeMana;
+                    cashSupplyUpgradeMana += 200
+                    document.getElementById("mana").textContent = mana + " Mana";
+                    document.getElementById("cashSupplyUpgrade").textContent = "Upgrade Gaster Supply (" + cashSupplyUpgradeMana + " Mana)";
                 }
             }
             setInterval(autoAdd, 1000)
