@@ -2,12 +2,16 @@
 <html>
     <head>
         <title>
-            Clicker game V2
+            Clicker game V3
         </title>
     </head>
     <body>
         <h1 id="cash">
             0 Gasters
+        </h1>
+
+        <h1 id="mana">
+            0 Mana
         </h1>
 
         <button onclick="add()">
@@ -22,20 +26,30 @@
             Get Clicker (20)
         </button>
 
+        <button onclick="cashSupply()">
+            Gaster Supply (100 Mana)
+        </button>
+
         <script>
             let cps = 0;
             let cpc = 1;
             let cash = 0;
             let upgradeCost = 10;
             let clickerCost = 20;
+            let mana = 0;
+            let mpc = 1;
+            let mps = 0;
+            let cashSupplyMana = 100
 
             function autoAdd(){
-                cash += cps
+                cash += cps;
                 document.getElementById("cash").textContent = cash + " Gasters";
             }
             function add(){
                 cash += cpc;
+                mana += mpc;
                 document.getElementById("cash").textContent = cash + " Gasters";
+                document.getElementById("mana").textContent = mana + " Mana";
             }
             function upgrade(){
                 if (cash >= upgradeCost){
@@ -53,6 +67,14 @@
                     clickerCost += 25;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker").textContent = "Get Clicker (" + clickerCost + ")";
+                }
+            }
+            function cashSupply(){
+                if (mana >= cashSupplyMana){
+                    cash += 1000;
+                    mana -= cashSupplyMana;
+                    document.getElementById("cash").textContent = cash + " Gasters";
+                    document.getElementById("mana").textContent = mana + " Mana";
                 }
             }
             setInterval(autoAdd, 1000)
