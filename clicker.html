@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>
-            Clicker game V6
+            Clicker game V7
         </title>
     </head>
     <body>
@@ -35,7 +35,11 @@
             Get Clicker V2 (50 Gasters)
         </button>
 
-        <button onclick="cashSupply()">
+        <button onclick="clicker3()" id="clicker3">
+            Get Clicker V3 (120 Gasters)
+        </button>
+
+        <button onclick="cashSupply()" id="cashSupply">
             Gaster Supply (100 Mana)
         </button>
 
@@ -51,6 +55,7 @@
             let upgradeCost = 10;
             let clickerCost = 20;
             let clicker2Cost = 50;
+            let clicker3Cost = 120;
             let manaUpgradeCost = 30;
             let mana = 0;
             let mpc = 1;
@@ -95,12 +100,13 @@
                     document.getElementById("clicker2").textContent = "Get Clicker V2 (" + clicker2Cost + " Gasters)";
                 }
             }
-            function cashSupply(){
-                if (mana >= cashSupplyMana){
-                    cash += cpCashSupply;
-                    mana -= cashSupplyMana;
+            function clicker3(){
+                if (cash >= clicker3Cost){
+                    cps += 100;
+                    cash -= clicker3Cost;
+                    clicker3Cost += 150
                     document.getElementById("cash").textContent = cash + " Gasters";
-                    document.getElementById("mana").textContent = mana + " Mana";
+                    document.getElementById("clicker3").textContent = "Get Clicker V3 (" + clicker3Cost + " Gasters)";
                 }
             }
             function manaUpgrade(){
@@ -113,6 +119,14 @@
                     document.getElementById("manaUpgrade").textContent = "Upgrade Mana Adder (" + manaUpgradeCost + " Gasters)";
                 }
             }
+            function cashSupply(){
+                if (mana >= cashSupplyMana){
+                    cash += cpCashSupply;
+                    mana -= cashSupplyMana;
+                    document.getElementById("cash").textContent = cash + " Gasters";
+                    document.getElementById("mana").textContent = mana + " Mana";
+                }
+            }
             function cashSupplyUpgrade(){
                 if (mana >= cashSupplyUpgradeMana){
                     cpCashSupply += 5000;
@@ -120,6 +134,7 @@
                     cashSupplyMana += 100
                     cashSupplyUpgradeMana += 200
                     document.getElementById("mana").textContent = mana + " Mana";
+                    document.getElementById("cashSupply").textContent = "Gaster Supply (" + cashSupplyMana + " Mana)"
                     document.getElementById("cashSupplyUpgrade").textContent = "Upgrade Gaster Supply (" + cashSupplyUpgradeMana + " Mana)";
                 }
             }
