@@ -117,6 +117,7 @@
                 if (mana >= cashSupplyUpgradeMana){
                     cpCashSupply += 5000;
                     mana -= cashSupplyUpgradeMana;
+                    cashSupplyMana += 100
                     cashSupplyUpgradeMana += 200
                     document.getElementById("mana").textContent = mana + " Mana";
                     document.getElementById("cashSupplyUpgrade").textContent = "Upgrade Gaster Supply (" + cashSupplyUpgradeMana + " Mana)";
