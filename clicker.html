@@ -31,6 +31,10 @@
             Get Clicker (20 Gasters)
         </button>
 
+        <button onclick="clicker2()" id="clicker2">
+            Get Clicker V2 (50 Gasters)
+        </button>
+
         <button onclick="cashSupply()">
             Gaster Supply (100 Mana)
         </button>
@@ -41,6 +45,7 @@
             let cash = 0;
             let upgradeCost = 10;
             let clickerCost = 20;
+            let clicker2Cost = 50;
             let manaUpgradeCost = 30;
             let mana = 0;
             let mpc = 1;
@@ -73,6 +78,15 @@
                     clickerCost += 25;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker").textContent = "Get Clicker (" + clickerCost + " Gasters)";
+                }
+            }
+            function clicker2(){
+                if (cash >= clicker2Cost){
+                    cps += 10;
+                    cash -= clicker2Cost;
+                    clicker2Cost += 100;
+                    document.getElementById("cash").textContent = cash + " Gasters";
+                    document.getElementById("clicker2").textContent = "Get Clicker V2 (" + clicker2Cost + " Gasters)";
                 }
             }
             function cashSupply(){
