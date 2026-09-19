@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>
-            Clicker game V7
+            Clicker game V7.1
         </title>
     </head>
     <body>
@@ -48,6 +48,7 @@
         </button>
 
         <script>
+            const clickSound = new Audio("music/click.wav");
             let cps = 0;
             let cpc = 1;
             let cpCashSupply = 1000;
@@ -70,6 +71,8 @@
             function add(){
                 cash += cpc;
                 mana += mpc;
+                clickSound.currentTime = 0;
+                clickSound.play();
                 document.getElementById("cash").textContent = cash + " Gasters";
                 document.getElementById("mana").textContent = mana + " Mana";
             }
