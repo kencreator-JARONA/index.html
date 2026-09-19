@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>
-            Clicker game V7.1
+            Clicker game V7.2
         </title>
     </head>
     <body>
@@ -32,11 +32,11 @@
         </button>
 
         <button onclick="clicker2()" id="clicker2">
-            Get Clicker V2 (50 Gasters)
+            Get Clicker V2 (150 Gasters)
         </button>
 
         <button onclick="clicker3()" id="clicker3">
-            Get Clicker V3 (120 Gasters)
+            Get Clicker V3 (300 Gasters)
         </button>
 
         <button onclick="cashSupply()" id="cashSupply">
@@ -48,15 +48,15 @@
         </button>
 
         <script>
-            const clickSound = new Audio("music/click.wav");
+            const clickSound = new Audio("click.wav");
             let cps = 0;
             let cpc = 1;
             let cpCashSupply = 1000;
             let cash = 0;
             let upgradeCost = 10;
             let clickerCost = 20;
-            let clicker2Cost = 50;
-            let clicker3Cost = 120;
+            let clicker2Cost = 150;
+            let clicker3Cost = 300;
             let manaUpgradeCost = 30;
             let mana = 0;
             let mpc = 1;
@@ -98,7 +98,7 @@
                 if (cash >= clicker2Cost){
                     cps += 10;
                     cash -= clicker2Cost;
-                    clicker2Cost += 100;
+                    clicker2Cost += 200;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker2").textContent = "Get Clicker V2 (" + clicker2Cost + " Gasters)";
                 }
@@ -107,7 +107,7 @@
                 if (cash >= clicker3Cost){
                     cps += 100;
                     cash -= clicker3Cost;
-                    clicker3Cost += 150
+                    clicker3Cost += 500
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker3").textContent = "Get Clicker V3 (" + clicker3Cost + " Gasters)";
                 }
