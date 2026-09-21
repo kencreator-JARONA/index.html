@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>
-            Clicker game V8
+            Clicker game V7.2
         </title>
     </head>
     <body>
@@ -47,10 +47,6 @@
             Upgrade Gaster Supply (100 Mana)
         </button>
 
-        <button onclick="cashConvert()" id="cashConvert">
-            Gaster Convert (0 Gasters)
-        </button>
-
         <script>
             const clickSound = new Audio("click.wav");
             let cps = 0;
@@ -71,7 +67,6 @@
             function autoAdd(){
                 cash += cps;
                 document.getElementById("cash").textContent = cash + " Gasters";
-                document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
             }
             function add(){
                 cash += cpc;
@@ -80,7 +75,6 @@
                 clickSound.play();
                 document.getElementById("cash").textContent = cash + " Gasters";
                 document.getElementById("mana").textContent = mana + " Mana";
-                document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
             }
             function upgrade(){
                 if (cash >= upgradeCost){
@@ -89,7 +83,6 @@
                     upgradeCost += 15;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("upgrade").textContent = "Upgrade Adder (" + upgradeCost + " Gasters)";
-                    document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
                 }
             }
             function clicker(){
@@ -99,7 +92,6 @@
                     clickerCost += 25;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker").textContent = "Get Clicker (" + clickerCost + " Gasters)";
-                    document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
                 }
             }
             function clicker2(){
@@ -109,7 +101,6 @@
                     clicker2Cost += 200;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker2").textContent = "Get Clicker V2 (" + clicker2Cost + " Gasters)";
-                    document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
                 }
             }
             function clicker3(){
@@ -119,7 +110,6 @@
                     clicker3Cost += 500;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("clicker3").textContent = "Get Clicker V3 (" + clicker3Cost + " Gasters)";
-                    document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
                 }
             }
             function manaUpgrade(){
@@ -130,7 +120,6 @@
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("mana").textContent = mana + " Mana";
                     document.getElementById("manaUpgrade").textContent = "Upgrade Mana Adder (" + manaUpgradeCost + " Gasters)";
-                    document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
                 }
             }
             function cashSupply(){
@@ -139,7 +128,6 @@
                     mana -= cashSupplyMana;
                     document.getElementById("cash").textContent = cash + " Gasters";
                     document.getElementById("mana").textContent = mana + " Mana";
-                    document.getElementById("cashConvert").textContent = "Gaster Convert (" + cash * 0.1 + " Gasters)"
                 }
             }
             function cashSupplyUpgrade(){
@@ -152,15 +140,6 @@
                     document.getElementById("cashSupply").textContent = "Gaster Supply (" + cashSupplyMana + " Mana)"
                     document.getElementById("cashSupplyUpgrade").textContent = "Upgrade Gaster Supply (" + cashSupplyUpgradeMana + " Mana)";
                 }
-            }
-            function cashConvert(){
-                mana += cash * 10
-                cash *= 0.9
-                cash = Math.floor(cash)
-                mana = Math.floor(mana)
-                document.getElementById("cash").textContent = cash + " Gasters";
-                document.getElementById("mana").textContent = mana + " Mana";
-                document.getElementById("cashConvert").textContent = "Gaster Convert (" + Math.floor(cash * 0.1) + " Gasters)"
             }
             setInterval(autoAdd, 1000)
         </script>
