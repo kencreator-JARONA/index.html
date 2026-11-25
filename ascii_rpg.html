@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            ASCII RPG V1
+        </title>
+    </head>
+    <body>
+        <h1 id="lvl">
+            Level 1
+        </h1>
+        <h2 id="hp">
+            100HP
+        </h2>
+        <h2 id="atk">
+            ATK 1
+        </h2>
+        <h3 id="xp">
+            20 XP until next level
+        </h3>
+        <p id="ascii"> </p>
+        <br>
+        <button onclick="goblin()">
+            Fight Goblin
+        </button>
+        <p id="enemy"></p>
+
+        <script>
+            let ascii = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~"];
+            let enemy;
+            let enemyHp;
+            let enemyAtk;
+            let winXp;
+            let maxHp = 100;
+            let playerHp = 100;
+            let playerAtk = 1;
+            let playerLvl = 1;
+            let xpToNextLvl = 20;
+            let currentChars = [" "];
+
+            function goblin(){
+                enemy = "goblin";
+                enemyHp = Math.floor(Math.random() * 3) + 4;
+                enemyAtk = 2;
+                winXp = Math.floor(Math.random() * 7) + 3;
+                document.getElementById("enemy").textContent = "Goblin HP " + enemyHp;
+                fight();
+            }
+            function turn(){
+                playerTurn();
+                enemyTurn();
+            }
+            function playerTurn(){
+                enemyHp -= playerAtk;
+                document.getElementById("enemy").textContent = "Goblin HP " + enemyHp; 
+            }
+            function enemyTurn(){
+                playerHp -= enemyAtk;
+                document.getElementById("hp").textContent = playerHp + "HP";
+            }
+            function fight(){
+                if(enemy == null){
+                }
+                else if(enemyHp <= 0){
+                    xpToNextLvl -= winXp;
+                    document.getElementById("enemy").textContent = "You Won!";
+                    document.getElementById("xp").textContent = xpToNextLvl + " XP until next level";
+                    enemy = null
+                }
+                else if(playerHp <= 0){
+                    document.getElementById("enemy").textContent = "You Lost";
+                }
+                
+                else{
+                    turn();
+                }
+            }
+            function lvlUp(){
+                if(xpToNextLvl <= 0){
+                    maxHp += 20;
+                    playerAtk += 1;
+                    playerLvl += 1;
+                    xpToNextLvl = playerLvl * 20 + xpToNextLvl;
+                    document.getElementById("hp").textContent = playerHp + "HP";
+                    document.getElementById("atk").textContent = "Atk " + playerAtk;
+                    document.getElementById("lvl").textContent = "Level " + playerLvl;
+                    document.getElementById("xp").textContent = xpToNextLvl + " XP until next level";
+                }
+            }
+            function recover(){
+                if(playerHp < maxHp && playerHp > 0){
+                    playerHp += 1;
+                    document.getElementById("hp").textContent = playerHp + "HP";
+                }
+            }
+            setInterval(lvlUp, 1)
+            setInterval(fight, 1000);
+            setInterval(recover, 500);
+        </script>
+    </body>
+</html>
