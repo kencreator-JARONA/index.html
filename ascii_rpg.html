@@ -41,18 +41,19 @@
             let xpToNextLvl = 20;
 
             function goblin(){
-                enemy = "goblin";
+                enemy = "Goblin";
                 enemyHp = Math.floor(Math.random() * 3) + 4;
                 enemyAtk = 2;
                 winXp = Math.floor(Math.random() * 7) + 3;
-                document.getElementById("enemy").textContent = "Goblin HP " + enemyHp;
+                document.getElementById("enemy").textContent = enemy + " HP " + enemyHp;
                 fight();
             }
             function goblins(){
-                enemy = "triple goblin";
+                enemy = "Triple goblin";
                 enemyHp = Math.floor(Math.random() * 9) + 12;
                 enemyAtk = 6;
                 winXp = Math.floor(Math.random() * 21) + 9;
+                document.getElementById("emeny").textContent = enemy + " HP " + enemyHp;
             }
             function turn(){
                 playerTurn();
@@ -60,7 +61,7 @@
             }
             function playerTurn(){
                 enemyHp -= playerAtk;
-                document.getElementById("enemy").textContent = "Goblin HP " + enemyHp; 
+                document.getElementById("enemy").textContent = enemy + " HP " + enemyHp; 
             }
             function enemyTurn(){
                 playerHp -= enemyAtk;
