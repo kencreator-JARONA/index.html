@@ -19,16 +19,18 @@
         <h3 id="xp">
             20 XP until next level
         </h3>
-        <p id="ascii"> </p>
         <br>
         <button onclick="goblin()">
-            Fight Goblin
+            Fight a Goblin
+        </button>
+        <button onclick="goblins()">
+            Fight a Group of Goblins
         </button>
         <p id="enemy"></p>
 
         <script>
-            let ascii = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~"];
             let enemy;
+            let enemyCount;
             let enemyHp;
             let enemyAtk;
             let winXp;
@@ -37,7 +39,6 @@
             let playerAtk = 1;
             let playerLvl = 1;
             let xpToNextLvl = 20;
-            let currentChars = [" "];
 
             function goblin(){
                 enemy = "goblin";
@@ -46,6 +47,12 @@
                 winXp = Math.floor(Math.random() * 7) + 3;
                 document.getElementById("enemy").textContent = "Goblin HP " + enemyHp;
                 fight();
+            }
+            function goblins(){
+                enemy = "triple goblin";
+                enemyHp = Math.floor(Math.random() * 9) + 12;
+                enemyAtk = 6;
+                winXp = Math.floor(Math.random() * 21) + 9;
             }
             function turn(){
                 playerTurn();
@@ -66,10 +73,11 @@
                     xpToNextLvl -= winXp;
                     document.getElementById("enemy").textContent = "You Won!";
                     document.getElementById("xp").textContent = xpToNextLvl + " XP until next level";
-                    enemy = null
+                    enemy = null;
                 }
                 else if(playerHp <= 0){
                     document.getElementById("enemy").textContent = "You Lost";
+                    enemy = null;
                 }
                 
                 else{
